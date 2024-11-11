@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useRef } from "react";
+import { View, Text, TouchableOpacity, FlatList } from "react-native";
+import { FontAwesome5 } from "@expo/vector-icons";
+
+import { Menu, MenuHandles } from "./src/components/Menu";
+import { ButtonMenu } from "./src/components/ButtonMenu";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <FlatList
+      data={Array.from({ length: 10 })}
+      keyExtractor={(item, index) => index.toString()}
+      renderItem={() => <ButtonMenu />}
+      scrollEventThrottle={16}
+    />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
